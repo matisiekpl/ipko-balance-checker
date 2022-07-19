@@ -15,7 +15,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     client.goto("https://www.ipko.pl/").await?;
 
     client.delete_all_cookies().await?;
-    let cookies_string = fs::read_to_string("cookies.json").expect("Unable to read file");
+    let cookies_string = fs::read_to_string("cookies.txt").expect("Unable to read cookies.txt file");
     let cookies = cookies_string.split("\n").collect::<Vec<_>>();
     for x in cookies {
         let cookie = Cookie::parse(x.to_owned()).unwrap();
@@ -46,7 +46,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         // println!("Funds: {}", funds);
 
         // let cookies_string = client.get_all_cookies().await?.iter().map(|x| x.to_string()).collect::<Vec<_>>().join("\n");
-        // fs::write("cookies.json", cookies_string).expect("Unable to write file");
+        // fs::write("cookies.txt", cookies_string).expect("Unable to write file");
 
         fs::write(env!("FUNDS_FILE"), format!("{} zł", first_funds_text.replace(",", ".").replace(" ", ""))).expect("Unable to write file");
     }
