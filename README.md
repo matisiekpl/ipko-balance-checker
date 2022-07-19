@@ -15,6 +15,8 @@ export IPKO_USERNAME=username
 export IPKO_PASSWORD=password
 export FUNDS_FILE=/home/user/funds.txt
 chromedriver & # Run on port 9515
+
+# Then, put cookies into cookies.txt
 cargo run
 ```
 
